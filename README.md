@@ -20,4 +20,4 @@ Web-based trading journal and execution logger designed for forex traders.
 5.  **Analyze:** View your growth on the Equity Curve and review your "Logic" notes in the Ledger.
 
 ---
-*Developed by Benyahmin*
+*Developed by Benyamin*
