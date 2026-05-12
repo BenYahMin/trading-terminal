@@ -1,23 +1,60 @@
-# 📈 Master Trading Terminal v1.1
+# Master Trading Terminal v1.1 📈
 
-Web-based trading journal and execution logger designed for forex traders. 
+A high-performance web-based analytics dashboard designed to transform raw MT5 (MetaTrader 5) HTML reports into actionable trading intelligence. This terminal provides quantitative insights into directional bias, session performance, and asset rankings, alongside a real-time risk management suite.
+
+---
 
 ## 🚀 Key Features
 
-* **Lifecycle Trade Management:** Move trades from **Pending (Active)** to **Closed (Realized)**. Log entries the moment you execute in MT5 and finalize them once they hit TP/SL.
-* **Persistent Storage:** Built with `localStorage` technology; your trade history and equity curve remain intact even after browser refreshes or system restarts.
-* **Precision Metrics:** Automatic calculation of **Risk-to-Reward (RR) Ratios**, **Win Rates**, and **Total Realized P/L**.
-* **Quantitative Analytics:** Real-time **Equity Growth Curve** visualization using Chart.js.
-* **Risk Lab:** Integrated position sizing calculator based on pip-distance and dollar-risk.
-* **Data Portability:** One-click **CSV Export** to move your weekly data into Excel or Google Sheets for deep-dive auditing.
+### 📊 Performance Analytics
+* **Equity Growth Curve:** Visualizes your account trajectory using Chart.js to identify consistency and drawdowns.
+* **Directional Bias Tracking:** Breaks down PnL by BUY vs. SELL orders to identify if you perform better in specific market regimes.
+* **Session Profits (EAT):** Automatically categorizes trades into **Asian, London, and New York** sessions based on East Africa Time.
+* **Asset Ranking:** Lists symbols by profitability to show which pairs are your primary "breadwinners."
+
+### 🛡️ Risk & Discipline Suite
+* **Pre-Trade Checklist:** A psychological "circuit breaker" that locks the system until you confirm trend alignment, structural SL, news status, and emotional neutrality.
+* **Dynamic Risk Calculator:** Instantly calculates the required **Lot Size** based on your current account balance, desired risk percentage, and stop loss pips.
+
+### 🛠️ Technical Stack
+* **Frontend:** HTML5, CSS3 (Custom Properties/Grid/Flexbox).
+* **Typography:** Inter (UI) and JetBrains Mono (Data).
+* **Visuals:** Chart.js via CDN.
+* **Logic:** Pure Vanilla JavaScript (DOMParser API for MT5 report extraction).
+
+---
+
+## 📁 File Structure
+
+* `index.html`: The core structure, including the terminal grid layout and UI components.
+* `style.css`: Modern "Dark Mode" aesthetics with a high-contrast accent palette (`#00ff88`).
+* `script.js`: The "brain" of the terminal—handles file reading, regex-based parsing of MT5 reports, and UI updates.
+
+---
 
 ## 📖 How to Use
 
-1.  **Risk Calc:** Enter your SL pips and Dollar risk to get your lot size.
-2.  **Open Position:** Fill in the Pair, Type (Buy/Sell), and Entry levels. Click **OPEN POSITION**.
-3.  **Monitor:** The trade will appear in the **Live Management Dashboard**.
-4.  **Finalize:** Once the trade is finished, click **CLOSE**, enter the final Profit/Loss, and confirm. 
-5.  **Analyze:** View your growth on the Equity Curve and review your "Logic" notes in the Ledger.
+1.  **Export Report:** In MetaTrader 5, go to the **History** tab, right-click, and select **Report > HTML**.
+2.  **Launch Terminal:** Open `index.html` in any modern web browser (or via VS Code Live Server).
+3.  **Sync Data:** Click the **"Sync Account Report 📥"** button and upload your MT5 HTML file.
+4.  **Analyze:** The terminal will instantly populate your stats, growth curve, and lot size calculations.
 
 ---
-*Developed by Benyamin*
+
+## 🧪 Performance Lab Notes
+
+The terminal uses a specific logic for parsing:
+* **Calculations:** It filters for trades only (ignoring credit/deposit rows).
+* **Timezones:** Session categorization is optimized for **EAT (UTC+3)**, ideal for traders in the East African region.
+* **Lot Sizing:** Uses the formula: 
+    $$\text{Lot Size} = \frac{\text{Balance} \times (\text{Risk}\%)}{\text{SL Pips} \times 10}$$
+
+---
+
+## 🛠️ Development
+
+To modify the terminal or styles:
+* **Styles:** Edit the `:root` variables in `style.css` to change the theme.
+* **Logic:** Adjust the `parseReport` function in `script.js` if your MT5 report uses a non-standard column layout.
+
+**Terminal Ready.** Waiting for your next winning session... ⚡
